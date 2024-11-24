@@ -48,5 +48,3 @@ group :development, :test do
   gem "annotaterb"
   gem "rspec-rails", "~> 7.1.0"
 end
-
-

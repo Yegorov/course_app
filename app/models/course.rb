@@ -25,9 +25,10 @@ class Course < ApplicationRecord
     easy: 1,
     normal: 2,
     hard: 3
-  }
+  }, validate: { allow_nil: true }
   belongs_to :author, optional: true
   has_many :competences, dependent: :destroy
   validates :author, presence: true, on: :create
   validates :title, presence: true
+  validates :rating, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
 end

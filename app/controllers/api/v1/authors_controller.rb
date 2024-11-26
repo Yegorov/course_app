@@ -30,11 +30,12 @@ class API::V1::AuthorsController < API::V1::BaseController
   end
 
   def destroy
-    new_author = Author.first
+    new_author = Author.where.not(id: @author.id).first
     if new_author.nil?
       return render json: {
           status: 409,
-          error: "The last author cannot be deleted"
+          error: "Conflict",
+          message: "The last author cannot be deleted"
       }, status: :conflict
     end
     Author.transaction do

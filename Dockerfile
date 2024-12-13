@@ -41,6 +41,7 @@ RUN bundle install && \
 
 # Copy application code
 COPY . .
+COPY config/database.yml.docker config/database.yml
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
